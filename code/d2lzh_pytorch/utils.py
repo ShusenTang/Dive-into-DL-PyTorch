@@ -59,6 +59,8 @@ def squared_loss(y_hat, y):
     return (y_hat - y.view(y_hat.size())) ** 2 / 2
 
 def sgd(params, lr, batch_size):
+    # 为了和原书保持一致，这里除以了batch_size，但是应该是不用除的，因为一般用PyTorch计算loss时就默认已经
+    # 沿batch维求了平均了。
     for param in params:
         param.data -= lr * param.grad / batch_size # 注意这里更改param时用的param.data
 
