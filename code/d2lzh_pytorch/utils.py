@@ -119,7 +119,7 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
             
             l.backward()
             if optimizer is None:
-                d2l.sgd(params, lr, batch_size)
+                sgd(params, lr, batch_size)
             else:
                 optimizer.step()  # “softmax回归的简洁实现”一节将用到
             
