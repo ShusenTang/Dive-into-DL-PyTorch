@@ -81,7 +81,7 @@ def show_fashion_mnist(images, labels):
         f.set_title(lbl)
         f.axes.get_xaxis().set_visible(False)
         f.axes.get_yaxis().set_visible(False)
-    plt.show()
+    # plt.show()
 
 def load_data_fashion_mnist(batch_size, root='~/Datasets/FashionMNIST'):
     """Download the fashion mnist dataset and then load into memory."""
@@ -132,3 +132,17 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
         test_acc = evaluate_accuracy(test_iter, net)
         print('epoch %d, loss %.4f, train acc %.3f, test acc %.3f'
               % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc))
+
+
+
+# ########################### 3.11 ###############################
+def semilogy(x_vals, y_vals, x_label, y_label, x2_vals=None, y2_vals=None,
+             legend=None, figsize=(3.5, 2.5)):
+    set_figsize(figsize)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.semilogy(x_vals, y_vals)
+    if x2_vals and y2_vals:
+        plt.semilogy(x2_vals, y2_vals, linestyle=':')
+        plt.legend(legend)
+    # plt.show()
