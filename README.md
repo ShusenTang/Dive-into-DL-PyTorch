@@ -2,7 +2,7 @@
 Dive into Deep Learning with PyTorch code.      
 《动手学深度学习》原版代码都是用的MXNet框架，本仓库在尽量保持原版内容的基础上用PyTorch实现所有代码。持续更新中......
 <div align=center>
-<img width="300" src="./img/cover.jpg" alt="封面"/>
+<img width="500" src="./img/cover.png" alt="封面"/>
 </div>
 
 ## 简介
