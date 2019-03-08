@@ -96,13 +96,16 @@ def load_data_fashion_mnist(batch_size, root='~/Datasets/FashionMNIST'):
 
 
 
-# ########################### 3.6 ###############################
-def evaluate_accuracy(data_iter, net):
-    acc_sum, n = 0.0, 0
-    for X, y in data_iter:
-        acc_sum += (net(X).argmax(dim=1) == y).float().sum().item()
-        n += y.shape[0]
-    return acc_sum / n
+
+# ########################### 3.6  ###############################
+# (3.13节修改)
+# def evaluate_accuracy(data_iter, net):
+#     acc_sum, n = 0.0, 0
+#     for X, y in data_iter:
+#         acc_sum += (net(X).argmax(dim=1) == y).float().sum().item()
+#         n += y.shape[0]
+#     return acc_sum / n
+
 
 def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
               params=None, lr=None, optimizer=None):
@@ -134,6 +137,8 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
               % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc))
 
 
+
+
 # ########################### 3.7 #####################################3
 class FlattenLayer(torch.nn.Module):
     def __init__(self):
@@ -153,3 +158,23 @@ def semilogy(x_vals, y_vals, x_label, y_label, x2_vals=None, y2_vals=None,
         plt.semilogy(x2_vals, y2_vals, linestyle=':')
         plt.legend(legend)
     # plt.show()
+
+
+
+
+# ############################# 3.13 ##############################
+def evaluate_accuracy(data_iter, net):
+    acc_sum, n = 0.0, 0
+    for X, y in data_iter:
+        if isinstance(net, torch.nn.Module):
+            net.eval() # 评估模式, 这会关闭dropout
+            acc_sum += (net(X).argmax(dim=1) == y).float().sum().item()
+            net.train() # 改回训练模式
+        else: # 自定义的模型
+            if('is_training' in net.__code__.co_varnames): # 如果有is_training这个参数
+                # 将is_training设置成False
+                acc_sum += (net(X, is_training=False).argmax(dim=1) == y).float().sum().item() 
+            else:
+                acc_sum += (net(X).argmax(dim=1) == y).float().sum().item() 
+        n += y.shape[0]
+    return acc_sum / n
