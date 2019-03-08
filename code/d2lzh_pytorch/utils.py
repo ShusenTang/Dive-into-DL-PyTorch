@@ -134,6 +134,13 @@ def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,
               % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc))
 
 
+# ########################### 3.7 #####################################3
+class FlattenLayer(torch.nn.Module):
+    def __init__(self):
+        super(FlattenLayer, self).__init__()
+    def forward(self, x): # x shape: (batch, *, *, ...)
+        return x.view(x.shape[0], -1)
+
 
 # ########################### 3.11 ###############################
 def semilogy(x_vals, y_vals, x_label, y_label, x2_vals=None, y2_vals=None,
