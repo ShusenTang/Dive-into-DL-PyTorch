@@ -178,3 +178,17 @@ def evaluate_accuracy(data_iter, net):
                 acc_sum += (net(X).argmax(dim=1) == y).float().sum().item() 
         n += y.shape[0]
     return acc_sum / n
+
+
+
+
+
+
+# ########################### 5.1 #########################
+def corr2d(X, K):  # 本函数已保存在d2lzh_pytorch包中方便以后使用
+    h, w = K.shape
+    Y = torch.zeros((X.shape[0] - h + 1, X.shape[1] - w + 1))
+    for i in range(Y.shape[0]):
+        for j in range(Y.shape[1]):
+            Y[i, j] = (X[i: i + h, j: j + w] * K).sum()
+    return Y
