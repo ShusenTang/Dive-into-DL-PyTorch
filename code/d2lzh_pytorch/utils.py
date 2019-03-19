@@ -83,16 +83,17 @@ def show_fashion_mnist(images, labels):
         f.axes.get_yaxis().set_visible(False)
     # plt.show()
 
-def load_data_fashion_mnist(batch_size, root='~/Datasets/FashionMNIST'):
-    """Download the fashion mnist dataset and then load into memory."""
-    transform = transforms.ToTensor()
-    mnist_train = torchvision.datasets.FashionMNIST(root=root, train=True, download=True, transform=transform)
-    mnist_test = torchvision.datasets.FashionMNIST(root=root, train=False, download=True, transform=transform)
+# 5.6 修改
+# def load_data_fashion_mnist(batch_size, root='~/Datasets/FashionMNIST'):
+#     """Download the fashion mnist dataset and then load into memory."""
+#     transform = transforms.ToTensor()
+#     mnist_train = torchvision.datasets.FashionMNIST(root=root, train=True, download=True, transform=transform)
+#     mnist_test = torchvision.datasets.FashionMNIST(root=root, train=False, download=True, transform=transform)
 
-    train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=True, num_workers=4)
-    test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=False, num_workers=4)
+#     train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=True, num_workers=4)
+#     test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=False, num_workers=4)
 
-    return train_iter, test_iter
+#     return train_iter, test_iter
 
 
 
@@ -236,3 +237,24 @@ def train_ch5(net, train_iter, test_iter, batch_size, optimizer, device, num_epo
         test_acc = evaluate_accuracy(test_iter, net)
         print('epoch %d, loss %.4f, train acc %.3f, test acc %.3f, time %.1f sec'
               % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc, time.time() - start))
+
+
+# ########################## 5.6 #########################3
+def load_data_fashion_mnist(batch_size, resize=None, root='~/Datasets/FashionMNIST'):
+    """Download the fashion mnist dataset and then load into memory."""
+    trans = []
+    if resize:
+        trans.append(torchvision.transforms.Resize(size=resize))
+    trans.append(torchvision.transforms.ToTensor())
+    
+    transform = torchvision.transforms.Compose(trans)
+    mnist_train = torchvision.datasets.FashionMNIST(root=root, train=True, download=True, transform=transform)
+    mnist_test = torchvision.datasets.FashionMNIST(root=root, train=False, download=True, transform=transform)
+
+    train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=True, num_workers=4)
+    test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=False, num_workers=4)
+
+    return train_iter, test_iter
+
+
+
