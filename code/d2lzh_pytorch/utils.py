@@ -10,6 +10,8 @@ import zipfile
 from IPython import display
 from matplotlib import pyplot as plt
 import torch
+from torch import nn
+import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
 # import mxnet as mx
@@ -255,6 +257,16 @@ def load_data_fashion_mnist(batch_size, resize=None, root='~/Datasets/FashionMNI
     test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=False, num_workers=4)
 
     return train_iter, test_iter
+
+
+
+############################# 5.8 ##############################
+class GlobalAvgPool2d(nn.Module):
+    # 全局平均池化层可通过将池化窗口形状设置成输入的高和宽实现
+    def __init__(self):
+        super(GlobalAvgPool2d, self).__init__()
+    def forward(self, x):
+        return F.avg_pool2d(x, kernel_size=x.size()[2:])
 
 
 
