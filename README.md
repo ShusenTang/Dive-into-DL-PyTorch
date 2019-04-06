@@ -57,7 +57,10 @@ Dive into Deep Learning with PyTorch code.
 ### 6. 循环神经网络
 [6.1 语言模型](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.1_lang-model.md)    
 [6.2 循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.2_rnn.md)    
-[6.3 语言模型数据集（周杰伦专辑歌词）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.3_lang-model-dataset.md)     
+[6.3 语言模型数据集（周杰伦专辑歌词）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.3_lang-model-dataset.md)    
+[6.4 循环神经网络的从零开始实现](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.4_rnn-scratch.md)        
+
+
 
 
 持续更新中......
