@@ -414,7 +414,7 @@ def train_and_predict_rnn(rnn, get_params, init_rnn_state, num_hiddens,
                 state = init_rnn_state(batch_size, num_hiddens, device)
             else: 
             # 否则需要使用detach函数从计算图分离隐藏状态, 这是为了
-            # 使模型参数的梯度计算只依赖一次迭代读取的小批量序列
+            # 使模型参数的梯度计算只依赖一次迭代读取的小批量序列(防止梯度计算开销太大)
                 for s in state:
                     s.detach_()
             
