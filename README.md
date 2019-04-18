@@ -61,7 +61,9 @@ Dive into Deep Learning with PyTorch code.
 [6.4 循环神经网络的从零开始实现](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.4_rnn-scratch.md)             
 [6.5 循环神经网络的简洁实现](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.5_rnn-pytorch.md)              
 [6.6 通过时间反向传播](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.6_bptt.md)     
-
+[6.7 门控循环单元（GRU）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.7_gru.md)              
+[6.8 长短期记忆（LSTM）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.8_lstm.md)      
+ 
 
 
 持续更新中......
