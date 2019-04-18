@@ -65,7 +65,9 @@ Dive into Deep Learning with PyTorch code.
 [6.8 长短期记忆（LSTM）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.8_lstm.md)      
 [6.9 深度循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.9_deep-rnn.md)              
 [6.10 双向循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.10_bi-rnn.md)   
- 
+
+### 7. 优化算法
+[7.1 优化与深度学习](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.1_optimization-intro.md)     
 
 
 持续更新中......
