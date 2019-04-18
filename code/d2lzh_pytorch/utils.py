@@ -461,7 +461,7 @@ class RNNModel(nn.Module):
 
     def forward(self, inputs, state): # inputs: (batch, seq_len)
         # 获取one-hot向量表示
-        X = d2l.to_onehot(inputs, vocab_size) # X是个list
+        X = to_onehot(inputs, self.vocab_size) # X是个list
         Y, self.state = self.rnn(torch.stack(X), state)
         # 全连接层会首先将Y的形状变成(num_steps * batch_size, num_hiddens)，它的输出
         # 形状为(num_steps * batch_size, vocab_size)
