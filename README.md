@@ -63,8 +63,8 @@ Dive into Deep Learning with PyTorch code.
 [6.6 通过时间反向传播](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.6_bptt.md)     
 [6.7 门控循环单元（GRU）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.7_gru.md)              
 [6.8 长短期记忆（LSTM）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.8_lstm.md)      
-[6.9 深度循环神经网络¶](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.9_deep-rnn.md)              
-[6.10 双向循环神经网络¶](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.10_bi-rnn.md)  
+[6.9 深度循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.9_deep-rnn.md)              
+[6.10 双向循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.10_bi-rnn.md)   
  
 
 
