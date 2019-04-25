@@ -192,7 +192,7 @@ def semilogy(x_vals, y_vals, x_label, y_label, x2_vals=None, y2_vals=None,
 
 
 # ########################### 5.1 #########################
-def corr2d(X, K):  # 本函数已保存在d2lzh_pytorch包中方便以后使用
+def corr2d(X, K):  
     h, w = K.shape
     Y = torch.zeros((X.shape[0] - h + 1, X.shape[1] - w + 1))
     for i in range(Y.shape[0]):
@@ -313,7 +313,6 @@ def load_data_jay_lyrics():
     corpus_indices = [char_to_idx[char] for char in corpus_chars]
     return corpus_indices, char_to_idx, idx_to_char, vocab_size
 
-# 本函数已保存在d2lzh_pytorch包中方便以后使用
 def data_iter_random(corpus_indices, batch_size, num_steps, device=None):
     # 减1是因为输出的索引x是相应输入的索引y加1
     num_examples = (len(corpus_indices) - 1) // num_steps
@@ -335,7 +334,6 @@ def data_iter_random(corpus_indices, batch_size, num_steps, device=None):
         Y = [_data(j * num_steps + 1) for j in batch_indices]
         yield torch.tensor(X, dtype=torch.float32, device=device), torch.tensor(Y, dtype=torch.float32, device=device)
 
-# 本函数已保存在d2lzh_pytorch包中方便以后使用
 def data_iter_consecutive(corpus_indices, batch_size, num_steps, device=None):
     if device is None:
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -362,7 +360,7 @@ def one_hot(x, n_class, dtype=torch.float32):
     res.scatter_(1, x.view(-1, 1), 1)
     return res
 
-def to_onehot(X, n_class):  # 本函数已保存在d2lzh包中方便以后使用
+def to_onehot(X, n_class):  
     # X shape: (batch, seq_len), output: seq_len elements of (batch, n_class)
     return [one_hot(X[:, i], n_class) for i in range(X.shape[1])]
 
@@ -391,7 +389,6 @@ def grad_clipping(params, theta, device):
         for param in params:
             param.grad.data *= (theta / norm)
 
-# 本函数已保存在d2lzh包中方便以后使用
 def train_and_predict_rnn(rnn, get_params, init_rnn_state, num_hiddens,
                           vocab_size, device, corpus_indices, idx_to_char,
                           char_to_idx, is_random_iter, num_epochs, num_steps,
@@ -538,7 +535,7 @@ def train_and_predict_rnn_pytorch(model, num_hiddens, vocab_size, device,
 
 
 # ######################################## 7.2 ###############################################
-def train_2d(trainer):  # 本函数将保存在d2lzh_pytorch包中方便以后使用
+def train_2d(trainer):  
     x1, x2, s1, s2 = -5, -2, 0, 0  # s1和s2是自变量状态，本章后续几节会使用
     results = [(x1, x2)]
     for i in range(20):
@@ -547,9 +544,90 @@ def train_2d(trainer):  # 本函数将保存在d2lzh_pytorch包中方便以后�
     print('epoch %d, x1 %f, x2 %f' % (i + 1, x1, x2))
     return results
 
-def show_trace_2d(f, results):  # 本函数将保存在d2lzh_pytorch包中方便以后使用
-    d2l.plt.plot(*zip(*results), '-o', color='#ff7f0e')
+def show_trace_2d(f, results):  
+    plt.plot(*zip(*results), '-o', color='#ff7f0e')
     x1, x2 = np.meshgrid(np.arange(-5.5, 1.0, 0.1), np.arange(-3.0, 1.0, 0.1))
-    d2l.plt.contour(x1, x2, f(x1, x2), colors='#1f77b4')
-    d2l.plt.xlabel('x1')
-    d2l.plt.ylabel('x2')
+    plt.contour(x1, x2, f(x1, x2), colors='#1f77b4')
+    plt.xlabel('x1')
+    plt.ylabel('x2')
+
+
+
+
+# ######################################## 7.3 ###############################################
+def get_data_ch7():  
+    data = np.genfromtxt('../../data/airfoil_self_noise.dat', delimiter='\t')
+    data = (data - data.mean(axis=0)) / data.std(axis=0)
+    return torch.tensor(data[:1500, :-1]), torch.tensor(data[:1500, -1]) # 前1500个样本(每个样本5个特征)
+
+def train_ch7(optimizer_fn, states, hyperparams, features, labels,
+              batch_size=10, num_epochs=2):
+    # 初始化模型
+    net, loss = linreg, squared_loss
+    
+    w = torch.nn.Parameter(torch.tensor(np.random.normal(0, 0.01, size=(features.shape[1], 1)), dtype=torch.float32),
+                           requires_grad=True)
+    b = torch.nn.Parameter(torch.zeros(1, dtype=torch.float32), requires_grad=True)
+
+    def eval_loss():
+        return loss(net(features, w, b), labels).mean().item()
+
+    ls = [eval_loss()]
+    data_iter = torch.utils.data.DataLoader(
+        torch.utils.data.TensorDataset(features, labels), batch_size, shuffle=True)
+    
+    for _ in range(num_epochs):
+        start = time.time()
+        for batch_i, (X, y) in enumerate(data_iter):
+            l = loss(net(X, w, b), y).mean()  # 使用平均损失
+            
+            # 梯度清零
+            if w.grad is not None:
+                w.grad.data.zero_()
+                b.grad.data.zero_()
+                
+            l.backward()
+            optimizer_fn([w, b], states, hyperparams)  # 迭代模型参数
+            if (batch_i + 1) * batch_size % 100 == 0:
+                ls.append(eval_loss())  # 每100个样本记录下当前训练误差
+    # 打印结果和作图
+    print('loss: %f, %f sec per epoch' % (ls[-1], time.time() - start))
+    set_figsize()
+    plt.plot(np.linspace(0, num_epochs, len(ls)), ls)
+    plt.xlabel('epoch')
+    plt.ylabel('loss')
+
+# 本函数与原书不同的是这里第一个参数优化器函数而不是优化器的名字
+# 例如: optimizer_fn=torch.optim.SGD, optimizer_hyperparams={"lr": 0.05}
+def train_pytorch_ch7(optimizer_fn, optimizer_hyperparams, features, labels,
+                    batch_size=10, num_epochs=2):
+    # 初始化模型
+    net = nn.Sequential(
+        nn.Linear(features.shape[-1], 1)
+    )
+    loss = nn.MSELoss()
+    optimizer = optimizer_fn(net.parameters(), **optimizer_hyperparams)
+
+    def eval_loss():
+        return loss(net(features), labels).mean().item()
+
+    ls = [eval_loss()]
+    data_iter = torch.utils.data.DataLoader(
+        torch.utils.data.TensorDataset(features, labels), batch_size, shuffle=True)
+
+    for _ in range(num_epochs):
+        start = time.time()
+        for batch_i, (X, y) in enumerate(data_iter):
+            l = loss(net(X), y)
+            
+            optimizer.zero_grad()
+            l.backward()
+            optimizer.step()
+            if (batch_i + 1) * batch_size % 100 == 0:
+                ls.append(eval_loss())
+    # 打印结果和作图
+    print('loss: %f, %f sec per epoch' % (ls[-1], time.time() - start))
+    set_figsize()
+    plt.plot(np.linspace(0, num_epochs, len(ls)), ls)
+    plt.xlabel('epoch')
+    plt.ylabel('loss')

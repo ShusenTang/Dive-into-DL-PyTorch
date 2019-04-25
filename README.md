@@ -67,7 +67,9 @@ Dive into Deep Learning with PyTorch code.
 [6.10 双向循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter06_RNN/6.10_bi-rnn.md)   
 
 ### 7. 优化算法
-[7.1 优化与深度学习](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.1_optimization-intro.md)     
+[7.1 优化与深度学习](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.1_optimization-intro.md)              
+[7.2 梯度下降和随机梯度下降](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.2_gd-sgd.md)       
+[7.3 小批量随机梯度下降](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.3_minibatch-sgd.md)           
 
 
 持续更新中......
