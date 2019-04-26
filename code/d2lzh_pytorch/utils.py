@@ -558,7 +558,8 @@ def show_trace_2d(f, results):
 def get_data_ch7():  
     data = np.genfromtxt('../../data/airfoil_self_noise.dat', delimiter='\t')
     data = (data - data.mean(axis=0)) / data.std(axis=0)
-    return torch.tensor(data[:1500, :-1]), torch.tensor(data[:1500, -1]) # 前1500个样本(每个样本5个特征)
+    return torch.tensor(data[:1500, :-1], dtype=torch.float32), \
+        torch.tensor(data[:1500, -1], dtype=torch.float32) # 前1500个样本(每个样本5个特征)
 
 def train_ch7(optimizer_fn, states, hyperparams, features, labels,
               batch_size=10, num_epochs=2):
