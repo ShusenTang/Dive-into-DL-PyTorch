@@ -71,7 +71,8 @@ Dive into Deep Learning with PyTorch code.
 [7.2 梯度下降和随机梯度下降](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.2_gd-sgd.md)       
 [7.3 小批量随机梯度下降](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.3_minibatch-sgd.md)         
 [7.4 动量法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.4_momentum.md)      
-[7.5 AdaGrad算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.5_adagrad.md)      
+[7.5 AdaGrad算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.5_adagrad.md)     
+[7.6 RMSProp算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.6_rmsprop.md)      
 
 
 持续更新中......
