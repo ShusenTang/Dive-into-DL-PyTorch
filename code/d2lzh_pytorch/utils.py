@@ -611,7 +611,7 @@ def train_pytorch_ch7(optimizer_fn, optimizer_hyperparams, features, labels,
     optimizer = optimizer_fn(net.parameters(), **optimizer_hyperparams)
 
     def eval_loss():
-        return loss(net(features), labels).mean().item()
+        return loss(net(features).view(-1), labels).item() / 2
 
     ls = [eval_loss()]
     data_iter = torch.utils.data.DataLoader(
@@ -620,7 +620,8 @@ def train_pytorch_ch7(optimizer_fn, optimizer_hyperparams, features, labels,
     for _ in range(num_epochs):
         start = time.time()
         for batch_i, (X, y) in enumerate(data_iter):
-            l = loss(net(X), y)
+            # 除以2是为了和train_ch7保持一致, 因为squared_loss中除了2
+            l = loss(net(X).view(-1), y) / 2 
             
             optimizer.zero_grad()
             l.backward()
