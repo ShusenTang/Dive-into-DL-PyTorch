@@ -58,7 +58,8 @@ def linreg(X, w, b):
     return torch.mm(X, w) + b
 
 def squared_loss(y_hat, y): 
-    return (y_hat - y.view(y_hat.size())) ** 2 / 2
+    # 注意这里返回的是向量, 另外, pytorch里的MSELoss并没有除以 2
+    return ((y_hat - y.view(y_hat.size())) ** 2) / 2
 
 def sgd(params, lr, batch_size):
     # 为了和原书保持一致，这里除以了batch_size，但是应该是不用除的，因为一般用PyTorch计算loss时就默认已经
