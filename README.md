@@ -73,7 +73,8 @@ Dive into Deep Learning with PyTorch code.
 [7.4 动量法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.4_momentum.md)      
 [7.5 AdaGrad算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.5_adagrad.md)     
 [7.6 RMSProp算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.6_rmsprop.md)       
-[7.7 AdaDelta算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.7_adadelta.md) 
+[7.7 AdaDelta算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.7_adadelta.md)      
+[7.7 Adam算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.8_adam.md)       
 
 
 持续更新中......
