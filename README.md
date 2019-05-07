@@ -74,7 +74,11 @@ Dive into Deep Learning with PyTorch.
 [7.5 AdaGrad算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.5_adagrad.md)     
 [7.6 RMSProp算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.6_rmsprop.md)       
 [7.7 AdaDelta算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.7_adadelta.md)      
-[7.8 Adam算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.8_adam.md)       
+[7.8 Adam算法](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter07_optimization/7.8_adam.md)  
+
+### 8. 计算性能
+[8.1 命令式和符号式混合编程](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.1_hybridize.md)      
+[8.2 异步计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.2_async-computation.md)         
 
 
 持续更新中......
