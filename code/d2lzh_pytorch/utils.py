@@ -634,3 +634,17 @@ def train_pytorch_ch7(optimizer_fn, optimizer_hyperparams, features, labels,
     plt.plot(np.linspace(0, num_epochs, len(ls)), ls)
     plt.xlabel('epoch')
     plt.ylabel('loss')
+
+
+
+
+############################## 8.3 ##################################
+class Benchmark():
+    def __init__(self, prefix=None):
+        self.prefix = prefix + ' ' if prefix else ''
+
+    def __enter__(self):
+        self.start = time.time()
+
+    def __exit__(self, *args):
+        print('%stime: %.4f sec' % (self.prefix, time.time() - self.start))
