@@ -204,8 +204,8 @@ def corr2d(X, K):
 
 
 # ############################ 5.5 #########################
-def evaluate_accuracy(data_iter, net):
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+def evaluate_accuracy(data_iter, net, 
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')):
     acc_sum, n = 0.0, 0
     with torch.no_grad():
         for X, y in data_iter:
@@ -222,7 +222,7 @@ def evaluate_accuracy(data_iter, net):
             n += y.shape[0]
     return acc_sum / n
 
-
+# TODO: 最后train_l_sum不应该除以n, 因为l已经在一个batch算过平均了, 所以最后train_l_sum应该除以batch数
 def train_ch5(net, train_iter, test_iter, batch_size, optimizer, device, num_epochs):
     net = net.to(device)
     print("training on ", device)
