@@ -80,7 +80,10 @@ Dive into Deep Learning with PyTorch.
 [8.1 命令式和符号式混合编程](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.1_hybridize.md)      
 [8.2 异步计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.2_async-computation.md)         
 [8.3 自动并行计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.3_auto-parallelism.md)    
-[8.4 多GPU计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.4_multiple-gpus.md)      
+[8.4 多GPU计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.4_multiple-gpus.md)     
+
+### 9. 计算机视觉
+[9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)      
 
 
 持续更新中......
