@@ -99,5 +99,18 @@ Dive into Deep Learning with PyTorch.
 项目地址: https://github.com/d2l-ai/d2l-en        
 此为加州大学伯克利分校 2019 年春学期 Introduction to Deep Learning (STAT 157)课程教材。
 
-> 注：本仓库包含一些公式，但是github的markdown原生是不支持公式显示的，Chrome用户建议安装这个[在github上显示公式的插件](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)。
 
+## 引用
+如果您在研究中使用了这个项目请引用原书:
+```
+@book{zhang2019dive,
+    title={Dive into Deep Learning},
+    author={Aston Zhang and Zachary C. Lipton and Mu Li and Alexander J. Smola},
+    note={\url{http://www.d2l.ai}},
+    year={2019}
+}
+```
+
+
+----------------------
+> 注：本仓库包含一些公式，但是github的markdown原生是不支持公式显示的，Chrome用户建议安装这个[在github上显示公式的插件](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)。
