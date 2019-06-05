@@ -83,7 +83,8 @@ Dive into Deep Learning with PyTorch.
 [8.4 多GPU计算](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter08_computational-performance/8.4_multiple-gpus.md)     
 
 ### 9. 计算机视觉
-[9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)      
+[9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)  
+[9.2 微调](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.2_fine-tuning.md)    
 
 
 持续更新中......
