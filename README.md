@@ -84,7 +84,8 @@ Dive into Deep Learning with PyTorch.
 
 ### 9. 计算机视觉
 [9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)  
-[9.2 微调](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.2_fine-tuning.md)    
+[9.2 微调](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.2_fine-tuning.md)     
+[9.3 目标检测和边界框](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.3_bounding-box.md)    
 
 
 持续更新中......

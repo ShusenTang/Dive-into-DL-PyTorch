@@ -690,7 +690,6 @@ def show_images(imgs, num_rows, num_cols, scale=2):
             axes[i][j].axes.get_yaxis().set_visible(False)
     return axes
 
-# 本函数已保存在d2lzh_pytorch包中方便以后使用
 def train(train_iter, test_iter, net, loss, optimizer, device, num_epochs):
     net = net.to(device)
     print("training on ", device)
@@ -712,3 +711,15 @@ def train(train_iter, test_iter, net, loss, optimizer, device, num_epochs):
         test_acc = evaluate_accuracy(test_iter, net)
         print('epoch %d, loss %.4f, train acc %.3f, test acc %.3f, time %.1f sec'
               % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, test_acc, time.time() - start))
+
+
+
+
+
+############################## 9.3 #####################
+def bbox_to_rect(bbox, color):
+    # 将边界框(左上x, 左上y, 右下x, 右下y)格式转换成matplotlib格式：
+    # ((左上x, 左上y), 宽, 高)
+    return d2l.plt.Rectangle(
+        xy=(bbox[0], bbox[1]), width=bbox[2]-bbox[0], height=bbox[3]-bbox[1],
+        fill=False, edgecolor=color, linewidth=2)
