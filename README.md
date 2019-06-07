@@ -86,7 +86,10 @@ Dive into Deep Learning with PyTorch.
 [9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)  
 [9.2 微调](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.2_fine-tuning.md)     
 [9.3 目标检测和边界框](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.3_bounding-box.md)    
+[由于这段时间我刚好会用到NLP，所以先更NLP，CV回头再更]
 
+### 10. 自然语言处理
+[10.1 词嵌入（word2vec）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.1_word2vec.md)
 
 持续更新中......
 
