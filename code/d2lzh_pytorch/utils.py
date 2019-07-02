@@ -6,6 +6,7 @@ import sys
 import tarfile
 import time
 import zipfile
+from tqdm import tqdm
 
 from IPython import display
 from matplotlib import pyplot as plt
@@ -14,10 +15,7 @@ from torch import nn
 import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
-# import mxnet as mx
-# from mxnet import autograd, gluon, image, init, nd
-# from mxnet.contrib import text
-# from mxnet.gluon import data as gdata, loss as gloss, nn, utils as gutils
+import torchtext.vocab as vocab
 import numpy as np
 
 
