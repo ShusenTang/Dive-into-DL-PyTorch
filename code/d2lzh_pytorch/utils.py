@@ -15,7 +15,8 @@ from torch import nn
 import torch.nn.functional as F
 import torchvision
 import torchvision.transforms as transforms
-import torchtext.vocab as vocab
+import torchtext
+import torchtext.vocab as Vocab
 import numpy as np
 
 
@@ -721,3 +722,63 @@ def bbox_to_rect(bbox, color):
     return d2l.plt.Rectangle(
         xy=(bbox[0], bbox[1]), width=bbox[2]-bbox[0], height=bbox[3]-bbox[1],
         fill=False, edgecolor=color, linewidth=2)
+
+
+
+
+
+# ############################# 10.7 ##########################
+def read_imdb(folder='train', data_root="/S1/CSCL/tangss/Datasets/aclImdb"): 
+    data = []
+    for label in ['pos', 'neg']:
+        folder_name = os.path.join(data_root, folder, label)
+        for file in tqdm(os.listdir(folder_name)):
+            with open(os.path.join(folder_name, file), 'rb') as f:
+                review = f.read().decode('utf-8').replace('\n', '').lower()
+                data.append([review, 1 if label == 'pos' else 0])
+    random.shuffle(data)
+    return data
+
+def get_tokenized_imdb(data):
+    """
+    data: list of [string, label]
+    """
+    def tokenizer(text):
+        return [tok.lower() for tok in text.split(' ')]
+    return [tokenizer(review) for review, _ in data]
+
+def get_vocab_imdb(data):
+    tokenized_data = get_tokenized_imdb(data)
+    counter = collections.Counter([tk for st in tokenized_data for tk in st])
+    return torchtext.vocab.Vocab(counter, min_freq=5)
+
+def preprocess_imdb(data, vocab):
+    max_l = 500  # 将每条评论通过截断或者补0，使得长度变成500
+
+    def pad(x):
+        return x[:max_l] if len(x) > max_l else x + [0] * (max_l - len(x))
+
+    tokenized_data = get_tokenized_imdb(data)
+    features = torch.tensor([pad([vocab.stoi[word] for word in words]) for words in tokenized_data])
+    labels = torch.tensor([score for _, score in data])
+    return features, labels
+
+def load_pretrained_embedding(words, pretrained_vocab):
+    """从预训练好的vocab中提取出words对应的词向量"""
+    embed = torch.zeros(len(words), pretrained_vocab.vectors[0].shape[0]) # 初始化为0
+    oov_count = 0 # out of vocabulary
+    for i, word in enumerate(words):
+        try:
+            idx = pretrained_vocab.stoi[word]
+            embed[i, :] = pretrained_vocab.vectors[idx]
+        except KeyError:
+            oov_count += 0
+    if oov_count > 0:
+        print("There are %d oov words.")
+    return embed
+
+def predict_sentiment(net, vocab, sentence):
+    """sentence是词语的列表"""
+    sentence = torch.tensor([vocab.stoi[word] for word in sentence], device=device)
+    label = torch.argmax(net(sentence.view((1, -1))), dim=1)
+    return 'positive' if label.item() == 1 else 'negative'
