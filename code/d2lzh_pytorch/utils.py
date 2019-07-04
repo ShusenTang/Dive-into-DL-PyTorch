@@ -779,6 +779,7 @@ def load_pretrained_embedding(words, pretrained_vocab):
 
 def predict_sentiment(net, vocab, sentence):
     """sentence是词语的列表"""
+    device = list(net.parameters())[0].device
     sentence = torch.tensor([vocab.stoi[word] for word in sentence], device=device)
     label = torch.argmax(net(sentence.view((1, -1))), dim=1)
     return 'positive' if label.item() == 1 else 'negative'
