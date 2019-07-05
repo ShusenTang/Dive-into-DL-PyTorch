@@ -97,7 +97,8 @@ Dive into Deep Learning with PyTorch.
 [10.6 求近义词和类比词](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.6_similarity-analogy.md)                   
 [10.7 文本情感分类：使用循环神经网络](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.7_sentiment-analysis-rnn.md)                        
 [10.8 文本情感分类：使用卷积神经网络（textCNN）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.8_sentiment-analysis-cnn.md)                   
-[10.9 编码器—解码器（seq2seq）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.9_seq2seq.md)
+[10.9 编码器—解码器（seq2seq）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.9_seq2seq.md)                   
+[10.10 束搜索](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.10_beam-search.md)
 
 
 
