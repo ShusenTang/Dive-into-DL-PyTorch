@@ -1,12 +1,18 @@
-# Dive into Deep Learning
-Dive into Deep Learning with PyTorch.      
-《动手学深度学习》原书所有内容都是基于MXNet框架，本仓库在尽量保持原书内容的基础上将其转换成基于PyTorch框架（包括文档和代码）。持续更新中......
+
 <div align=center>
 <img width="500" src="./img/cover.png" alt="封面"/>
 </div>
 
+本项目将[《动手学深度学习》](http://zh.d2l.ai/) 原书中MXNet代码实现改为PyTorch实现。原书作者：阿斯顿·张、李沐、扎卡里 C. 立顿、亚历山大 J. 斯莫拉以及其他社区贡献者，GitHub地址：https://github.com/d2l-ai/d2l-zh
+
+此书的[中](https://zh.d2l.ai/)[英](https://d2l.ai/)版本存在一些不同，针对此书英文版的PyTorch重构可参考[这个项目](https://github.com/dsgiitr/d2l-pytorch)。
+There are some differences between the [Chinese](https://zh.d2l.ai/) and [English](https://d2l.ai/) versions of this book. For the PyTorch modifying of the English version, you can refer to [this repo](https://github.com/dsgiitr/d2l-pytorch).
+
+
 ## 简介
 本仓库主要包含code和docs两个文件夹（外加一些数据和图片存放在data和img中）。其中code文件夹就是每章相关jupyter notebook代码（基于PyTorch）；docs文件夹就是markdown格式的《动手学深度学习》书中的相关内容，由于原书使用的是MXNet框架，所以docs内容可能与原书略有不同，但是整体内容是一样的。欢迎对本项目做出贡献或提出issue。
+
+> 注：本仓库包含一些公式，但是github的markdown原生是不支持公式显示的，Chrome用户可以安装这个[在github上显示公式的插件](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)，但还是建议clone到本地用常用的markdown应用查看。所有章节更新完毕后会考虑新增pdf版本，欢迎关注。
 
 ## 面向人群
 本项目面向对深度学习感兴趣，尤其是想使用PyTorch进行深度学习的童鞋。本项目并不要求你有任何深度学习或者机器学习的背景知识，你只需了解基础的数学和编程，如基础的线性代数、微分和概率，以及基础的Python编程。
@@ -85,8 +91,9 @@ Dive into Deep Learning with PyTorch.
 ### 9. 计算机视觉
 [9.1 图像增广](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.1_image-augmentation.md)  
 [9.2 微调](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.2_fine-tuning.md)     
-[9.3 目标检测和边界框](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.3_bounding-box.md)    
-[由于这段时间我刚好会用到NLP，所以先更NLP，CV回头再更]
+[9.3 目标检测和边界框](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter09_computer-vision/9.3_bounding-box.md)        
+待更新... 
+
 
 ### 10. 自然语言处理
 [10.1 词嵌入（word2vec）](https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/docs/chapter10_natural-language-processing/10.1_word2vec.md)      
@@ -112,12 +119,8 @@ Dive into Deep Learning with PyTorch.
 
 
 ## 原书地址
-### 中文版[动手学深度学习](https://zh.d2l.ai/)
-项目地址: https://github.com/d2l-ai/d2l-zh
-
-### 英文版[Dive into Deep Learning](https://d2l.ai/)
-项目地址: https://github.com/d2l-ai/d2l-en        
-此为加州大学伯克利分校 2019 年春学期 Introduction to Deep Learning (STAT 157)课程教材。
+中文版：[动手学深度学习](https://zh.d2l.ai/) | [Github仓库](https://github.com/d2l-ai/d2l-zh)       
+English Version: [Dive into Deep Learning](https://d2l.ai/) | [Github Repo](https://github.com/d2l-ai/d2l-en)
 
 
 ## 引用
@@ -130,7 +133,3 @@ Dive into Deep Learning with PyTorch.
     year={2019}
 }
 ```
-
-
-----------------------
-> 注：本仓库包含一些公式，但是github的markdown原生是不支持公式显示的，Chrome用户建议安装这个[在github上显示公式的插件](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)。
