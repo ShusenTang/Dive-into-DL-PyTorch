@@ -3,3 +3,5 @@
 *checkpoint.ipynb
 .mypy_cache*
 .vscode*
+.wwwdocs
+.gitbook
