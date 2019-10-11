@@ -74,8 +74,8 @@ cat > ${docs}/index.html << EOF
       extensions: ["tex2jax.js"],
       jax: ["input/TeX", "output/HTML-CSS"],
       tex2jax: {
-        inlineMath: [ ['\$','\$'], ["\\(","\\)"] ],
-        displayMath: [ ['\$$','\$$'], ["\\[","\\]"] ],
+        inlineMath: [ ['\$','\$'], ["\\\(","\\\)"] ],
+        displayMath: [ ['\$$','\$$'], ["\\\[","\\\]"] ],
         processEscapes: true,
         skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"]
       },
@@ -88,7 +88,7 @@ cat > ${docs}/index.html << EOF
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-python.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+  <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
 EOF
