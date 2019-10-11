@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-echo '本脚本将自动创建 .wwwdocs 目录，初始化项目依赖，使用 docsify 工具自动生成本地文档预览界面'
-
-echo '检测所需资源依赖中......'
-
 docs=".wwwdocs"
+echo "本脚本将自动创建 ${docs} 目录"
+echo '初始化项目依赖时将使用 docsify 工具自动生成本地文档web访问文档'
+echo '本web文档为绿色创建，不会对现有项目产生副作用！不会产生产生git需要提交文件！'
+echo '请放心食用 :))'
 
 mkdir -p ${docs}
 
@@ -16,9 +16,9 @@ cat README.md \
   | sed 's/^\[/   \* \[/g' \
   > ${docs}/_sidebar.md
 
-echo '根据项目README.md自动生成gitbook项目所需 README.md 文件 ......'
+echo '根据项目根目录下README.md以及docs/README.md合并生成项目所需${docs}导航 ......'
 sredme=`cat docs/README.md`
-cat README.md | awk -v sredme="${sredme}" '!/^### / && !/^\[/ && !/更新/ {print $0} /## 目录/ {print sredme}' | sed 's/## 目录/## 说明/g' > ${docs}/README.md
+cat README.md | awk -v sredme="${sredme}" '!/^### / && !/^\[/ && !/更新/ {print $0} /^## 目录/ {print sredme}' | sed 's/## 目录/## 说明/g' > ${docs}/README.md
 
 echo '生成 docsify 所需入口文件......'
 touch ${docs}/.nojekyll
@@ -65,7 +65,7 @@ cat > ${docs}/index.html << EOF
         }
       ],
       externalLinkTarget: '_target',
-      name: 'Dive-into-DL-PyTorch',
+      name: '《动手学深度学习（PyTorch版）》',
       repo: 'https://github.com/ShusenTang/Dive-into-DL-PyTorch'
     }
   </script>
@@ -104,7 +104,7 @@ if [[ ${port_used} -gt 0 ]]; then
   exit 1
 fi
 
-echo '启动web server，请在浏览器中打开：http://localhost:3000 ，即可访问 ......'
+echo '启动web server，稍后请在浏览器中打开：http://localhost:3000 ，即可访问 ......'
 if command -v docsify > /dev/null; then
   docsify serve .
 else
