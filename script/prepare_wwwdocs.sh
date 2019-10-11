@@ -65,7 +65,7 @@ cat > ${docs}/index.html << EOF
         }
       ],
       externalLinkTarget: '_target',
-      name: '《动手学深度学习（PyTorch版）》',
+      name: 'Dive-into-DL-PyTorch',
       repo: 'https://github.com/ShusenTang/Dive-into-DL-PyTorch'
     }
   </script>
