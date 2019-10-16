@@ -205,7 +205,7 @@ def corr2d(X, K):
 
 # ############################ 5.5 #########################
 def evaluate_accuracy(data_iter, net, device=None):
-    if device is None:
+    if device is None and isinstance(net, torch.nn.Module):
         # 如果没指定device就使用net的device
         device = list(net.parameters())[0].device 
     acc_sum, n = 0.0, 0
