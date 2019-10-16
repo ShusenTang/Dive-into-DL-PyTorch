@@ -11,7 +11,10 @@ mkdir -p ${docs}
 
 echo '根据项目README.md自动生成目录文件 ......'
 cat README.md \
-  | awk '/^## 目录/ {print "* [前言]()"} /^### / {hasmd=index($0, "md"); if (hasmd > 0) {print "* "substr($0, 5)} else print "* ["$2 $3"]()"} /^\[/ {print $0} /\.\.\./ {print "   * "$0}' \
+  | awk '/^## 目录/ {print "* [前言]()"} \
+  	 /^### / && /\.md)$/ {print "* "substr($0, 5)} \
+  	 /^### / && ! /\.md)$/ {getline t; nline=t; gsub(/\[[^]]*\]\(|\)|\s*/, "", t); print "* ["$2 " " $3"]("t")"; print nline;} \
+  	 /^\[/ {print $0} /\.\.\./ {print "   * "$0}' \
   | sed 's/https:\/\/github.com\/ShusenTang\/Dive-into-DL-PyTorch\/blob\/master\/docs\///g' \
   | sed 's/^\[/   \* \[/g' \
   > ${docs}/_sidebar.md
@@ -32,6 +35,8 @@ cat > ${docs}/index.html << EOF
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script>
 </head>
 <body>
   <div id="app"></div>
@@ -43,19 +48,7 @@ cat > ${docs}/index.html << EOF
         '/.*/_sidebar.md': '/_sidebar.md'
       },
       markdown: {
-        smartypants: true,
-        renderer: {
-          em: function(text) {
-            return text;
-          },
-          codespan: function(text) {
-            var reg = RegExp(/textrm/);
-            if(text.match(reg)){
-              return text
-            }
-            return '<code>' + text + '</code>';
-          }
-        }
+        latexRender: katex.renderToString.bind(katex)
       },
       plugins: [
         function(hook, vm) {
@@ -82,12 +75,11 @@ cat > ${docs}/index.html << EOF
       "HTML-CSS": { fonts: ["TeX"] }
     });
   </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="docsify.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
   <script src="//unpkg.com/docsify-copy-code"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-python.js"></script>
-
   <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
@@ -97,6 +89,7 @@ echo '为各章节markdown文件以及图片建立软连接 ......'
 cd ${docs}
 ln -fs ../docs/chapter* .
 ln -fs ../img .
+cp ../script/docsify.js .
 
 port_used=`lsof -nP -iTCP -sTCP:LISTEN | grep 3000 | wc -l`
 if [[ ${port_used} -gt 0 ]]; then
