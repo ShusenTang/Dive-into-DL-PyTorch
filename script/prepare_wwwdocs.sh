@@ -13,7 +13,7 @@ echo '根据项目README.md自动生成目录文件 ......'
 cat README.md \
   | awk '/^## 目录/ {print "* [前言]()"} \
   	 /^### / && /\.md)$/ {print "* "substr($0, 5)} \
-  	 /^### / && ! /\.md)$/ {getline t; nline=t; gsub(/\[[^]]*\]\(|\)|\s*/, "", t); print "* ["$2 " " $3"]("t")"; print nline;} \
+  	 /^### / && ! /\.md)$/ {dot=$2; gsub(/\./, "\\.", dot); print "* "dot " " $3;} \
   	 /^\[/ {print $0} /\.\.\./ {print "   * "$0}' \
   | sed 's/https:\/\/github.com\/ShusenTang\/Dive-into-DL-PyTorch\/blob\/master\/docs\///g' \
   | sed 's/^\[/   \* \[/g' \
@@ -43,6 +43,8 @@ cat > ${docs}/index.html << EOF
   <script>
     window.\$docsify = {
       loadSidebar: true,
+      maxLevel: 4,
+      subMaxLevel: 3,
       auto2top: true,
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
