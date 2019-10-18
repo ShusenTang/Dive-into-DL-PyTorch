@@ -37,6 +37,18 @@ cat > ${docs}/index.html << EOF
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script>
+  <style>
+    .sidebar>h1 a {
+      font-size: 20px;
+      color: black;
+    }
+    .content {
+      padding-top: 5px;
+    }
+    .markdown-section {
+      padding-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -52,6 +64,12 @@ cat > ${docs}/index.html << EOF
       markdown: {
         latexRender: katex.renderToString.bind(katex)
       },
+      search: {
+      	placeholder: 'Type to search',
+      	noData: 'No Results!',
+        paths: 'auto',
+        depth: 6
+      },
       plugins: [
         function(hook, vm) {
           hook.doneEach(function () {
@@ -60,7 +78,7 @@ cat > ${docs}/index.html << EOF
         }
       ],
       externalLinkTarget: '_target',
-      name: 'Dive-into-DL-PyTorch',
+      name: '《动手学深度学习》(PyTorch版)',
       repo: 'https://github.com/ShusenTang/Dive-into-DL-PyTorch'
     }
   </script>
@@ -82,6 +100,7 @@ cat > ${docs}/index.html << EOF
   <script src="//unpkg.com/docsify-copy-code"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-python.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
