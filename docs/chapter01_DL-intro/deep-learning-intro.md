@@ -25,7 +25,7 @@
 即使是在中世纪，数学家也热衷于利用统计学来做出估计。例如，在[雅各比·科贝尔（1460--1533）](https://www.maa.org/press/periodicals/convergence/mathematical-treasures-jacob-kobels-geometry)的几何书中记载了使用16名男子的平均脚长来估计男子的平均脚长。
 
 <div align=center>
-<img width="600" src="../../img/chapter01/1.1_koebel.jpg"/>
+<img width="600" src="../img/chapter01/1.1_koebel.jpg"/>
 </div>
 <center>图1.1 在中世纪，16名男子的平均脚长被用来估计男子的平均脚长</center>
 
