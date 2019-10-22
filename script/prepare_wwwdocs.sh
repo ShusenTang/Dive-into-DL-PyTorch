@@ -12,14 +12,15 @@ mkdir -p ${docs}
 echo '根据项目README.md自动生成目录文件 ......'
 cat README.md \
   | awk '/^## 目录/ {print "* [前言]()"} \
-  	 /^### / && /\.md)$/ {print "* "substr($0, 5)} \
-  	 /^### / && ! /\.md)$/ {dot=$2; gsub(/\./, "\\.", dot); print "* "dot " " $3;} \
-  	 /^\[/ {print $0} /\.\.\./ {print "   * "$0}' \
+  	 /^### / && /.md/ {print "* "substr($0, 5)} \
+  	 /^### / && ! /.md/ {dot=$2; gsub(/\./, "\\.", dot); print "* "dot " " $3;} \
+  	 /^\[/ {print $0} \
+  	 /\.\.\./ {print "   * "$0}' \
   | sed 's/https:\/\/github.com\/ShusenTang\/Dive-into-DL-PyTorch\/blob\/master\/docs\///g' \
   | sed 's/^\[/   \* \[/g' \
   > ${docs}/_sidebar.md
 
-echo '根据项目根目录下README.md以及docs/README.md合并生成项目所需${docs}导航 ......'
+echo "根据项目根目录下README.md以及docs/README.md合并生成项目所需${docs}导航 ......"
 sredme=`cat docs/README.md`
 cat README.md | awk -v sredme="${sredme}" '!/^### / && !/^\[/ && !/更新/ {print $0} /^## 目录/ {print sredme}' | sed 's/## 目录/## 说明/g' > ${docs}/README.md
 
@@ -112,7 +113,7 @@ ln -fs ../docs/chapter* .
 ln -fs ../img .
 cp ../script/docsify.js .
 
-port_used=`lsof -nP -iTCP -sTCP:LISTEN | grep 3000 | wc -l`
+port_used=`lsof -nP -iTCP -sTCP:LISTEN | grep ':3000' | wc -l`
 if [[ ${port_used} -gt 0 ]]; then
   echo '【警告】当前3000端口已被占用，请停止进程后再运行此脚本！'
   exit 1
@@ -123,5 +124,9 @@ if command -v docsify > /dev/null; then
   docsify serve .
 else
   #echo 'docsify-cli 没有安装，建议使用：npm i docsify-cli -g'
-  python -m SimpleHTTPServer 3000
+  if command -v python3 > /dev/null; then
+    python3 -m http.server 3000
+  else
+    python -m SimpleHTTPServer 3000
+  fi
 fi
