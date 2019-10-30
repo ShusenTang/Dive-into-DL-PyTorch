@@ -3,3 +3,5 @@
 *checkpoint.ipynb
 .mypy_cache*
 .vscode*
+# 皮卡丘数据集太大了
+data/pikachu*
