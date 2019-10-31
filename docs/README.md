@@ -111,6 +111,7 @@ docsify serve docs
    * [9.3 目标检测和边界框](chapter09_computer-vision/9.3_bounding-box.md)
    * [9.4 锚框](chapter09_computer-vision/9.4_anchor.md)
    * [9.5 多尺度目标检测](chapter09_computer-vision/9.5_multiscale-object-detection.md)
+   * [9.6 目标检测数据集（皮卡丘）](chapter09_computer-vision/9.6_object-detection-dataset.md)
    * 待更新...
 * 10\. 自然语言处理
    * [10.1 词嵌入（word2vec）](chapter10_natural-language-processing/10.1_word2vec.md)
