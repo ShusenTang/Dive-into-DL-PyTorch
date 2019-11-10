@@ -5,8 +5,10 @@ import random
 import sys
 import tarfile
 import time
+import json
 import zipfile
 from tqdm import tqdm
+from PIL import Image
 from collections import namedtuple
 
 from IPython import display
