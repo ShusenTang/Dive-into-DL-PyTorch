@@ -146,6 +146,6 @@ English Version: [Dive into Deep Learning](https://d2l.ai/) | [Github Repo](http
     title={Dive into Deep Learning},
     author={Aston Zhang and Zachary C. Lipton and Mu Li and Alexander J. Smola},
     note={\url{http://www.d2l.ai}},
-    year={2019}
+    year={2020}
 }
 ```
