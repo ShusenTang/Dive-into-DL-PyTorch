@@ -74,7 +74,13 @@
    * [9.4 锚框](chapter09_computer-vision/9.4_anchor.md)
    * [9.5 多尺度目标检测](chapter09_computer-vision/9.5_multiscale-object-detection.md)
    * [9.6 目标检测数据集（皮卡丘）](chapter09_computer-vision/9.6_object-detection-dataset.md)
-   * 待更新...
+   * 9.7 单发多框检测（SSD）
+   * [9.8 区域卷积神经网络（R-CNN）系列](chapter09_computer-vision/9.8_rcnn.md)
+   * 9.9 语义分割和数据集
+   * 9.10 全卷积网络（FCN）
+   * 9.11 样式迁移
+   * 9.12 实战Kaggle比赛：图像分类（CIFAR-10）
+   * 9.13 实战Kaggle比赛：狗的品种识别（ImageNet Dogs）
 * 10\. 自然语言处理
    * [10.1 词嵌入（word2vec）](chapter10_natural-language-processing/10.1_word2vec.md)
    * [10.2 近似训练](chapter10_natural-language-processing/10.2_approx-training.md)
