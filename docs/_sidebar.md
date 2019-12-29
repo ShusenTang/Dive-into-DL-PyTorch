@@ -76,7 +76,7 @@
    * [9.6 目标检测数据集（皮卡丘）](chapter09_computer-vision/9.6_object-detection-dataset.md)
    * 9.7 单发多框检测（SSD）
    * [9.8 区域卷积神经网络（R-CNN）系列](chapter09_computer-vision/9.8_rcnn.md)
-   * 9.9 语义分割和数据集
+   * [9.9 语义分割和数据集](chapter09_computer-vision/9.9_semantic-segmentation-and-dataset.md)
    * 9.10 全卷积网络（FCN）
    * [9.11 样式迁移](chapter09_computer-vision/9.11_neural-style.md)
    * 9.12 实战Kaggle比赛：图像分类（CIFAR-10）
