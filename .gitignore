@@ -5,3 +5,5 @@
 .vscode*
 # 皮卡丘数据集太大了
 data/pikachu*
+# Pascal VOC2012数据集, 约2G
+data/VOCdevkit*
