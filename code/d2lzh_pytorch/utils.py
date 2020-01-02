@@ -1203,9 +1203,9 @@ def load_pretrained_embedding(words, pretrained_vocab):
             idx = pretrained_vocab.stoi[word]
             embed[i, :] = pretrained_vocab.vectors[idx]
         except KeyError:
-            oov_count += 0
+            oov_count += 1
     if oov_count > 0:
-        print("There are %d oov words.")
+        print("There are %d oov words." % oov_count)
     return embed
 
 def predict_sentiment(net, vocab, sentence):
