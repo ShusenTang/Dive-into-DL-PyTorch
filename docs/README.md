@@ -34,6 +34,24 @@ cd Dive-into-DL-PyTorch
 docsify serve docs
 ```
 
+### 方法三
+如果你不想安装`docsify-cli`工具，甚至你的电脑上都没有安装`Node.js`，而出于某些原因你又想在本地浏览文档，那么你可以在`docker`容器中运行网页服务。
+
+首先将本项目clone到本地:
+``` shell
+git clone https://github.com/ShusenTang/Dive-into-DL-PyTorch.git
+cd Dive-into-DL-PyTorch
+```
+之后使用如下命令创建一个名称为「d2dl」的`docker`镜像：
+``` shell
+docker build -t d2dl .
+```
+镜像创建好后，运行如下命令创建一个新的容器：
+``` shell
+docker run -dp 3000:3000 d2dl
+```
+最后在浏览器中打开这个地址`http://localhost:3000/#/`，就能愉快地访问文档了。适合那些不想在电脑上装太多工具的小伙伴。
+
 
 ## 目录
 * [简介]()
