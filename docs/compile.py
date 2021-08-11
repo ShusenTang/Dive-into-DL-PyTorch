@@ -59,6 +59,7 @@ def format():
 def build(files):
     print("Building...")
     title = r"《动手学深度学习》PyTorch 实现"
+    toc_title = r"目录"
     author = r"原书作者：阿斯顿・张、李沐、扎卡里C.立顿、\\ 亚历山大J.斯莫拉、以及其他社区贡献者 \thanks{GitHub 地址: https://github.com/d2l-ai/d2l-zh}"
     date = r"\today"
 
@@ -71,13 +72,15 @@ def build(files):
     --listings \
     --pdf-engine=xelatex \
     --template=tex/custom_template.tex \
+    -V documentclass=book \
     -V mathspec \
     -V graphicx \
     -V colorlinks \
     -V title='{}' \
+    -V toc-title='{}' \
     -V author='{}' \
     -V date='{}' \
-    --include-before-body=tex/cover.tex".format(" ".join(files), title, author, date)
+    --include-before-body=tex/cover.tex".format(" ".join(files), title, toc_title, author, date)
     )
     
     print("Done.", end="\n\n")

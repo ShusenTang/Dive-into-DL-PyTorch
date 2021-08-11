@@ -24,19 +24,7 @@ $endif$
 \usepackage{caption}
 \captionsetup[figure]{labelformat=empty}
 \renewcommand{\baselinestretch}{1.3} % 行间距
-$if(indent)$                                                           
-$else$
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-$endif$
+\usepackage{indentfirst}
 
 %
 % listings
@@ -171,6 +159,22 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
 }
+
+%
+% blockquotes
+%
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[
+  rightline   = false,
+  bottomline  = false,
+  topline     = false,
+  linewidth   = 4pt,
+  linecolor   = blockquote-border,
+  skipabove   = \parskip
+]{customblockquote}
+\renewenvironment{quote}{\vspace{4pt}\begin{customblockquote}\list{}{\rightmargin=1pt\leftmargin=1pt}\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}\vspace{4pt}}
 
 %
 % numbering

@@ -40,9 +40,7 @@ jobs:
           prettier --version
           echo "Dependencies installed"
       - name: Clone repository
-        uses: actions/checkout@master
-        with:
-          repository: LynnSpeng/Dive-into-DL-PyTorch
+        uses: actions/checkout@v2
       - name: Build pdf
         run: |
           cd docs
