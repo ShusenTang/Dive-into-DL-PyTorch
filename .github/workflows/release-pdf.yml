@@ -1,0 +1,74 @@
+name: Release PDF
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/release-pdf.yml
+      - docs/release-notes.md
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install fonts
+        run: |
+          mkdir -p ~/.fonts
+          mkdir -p ~/.fonts/palatino-linotype
+          mkdir -p ~/.fonts/source-han-serif
+          wget https://github.com/dolbydu/font/raw/master/Serif/Palatino/Palatino%20Linotype%20Bold%20Italic.ttf -O ~/.fonts/palatino-linotype/Palatino-Linotype-Bold-Italic.ttf
+          wget https://github.com/dolbydu/font/raw/master/Serif/Palatino/Palatino%20Linotype%20Bold.ttf -O ~/.fonts/palatino-linotype/Palatino-Linotype-Bold.ttf
+          wget https://github.com/dolbydu/font/raw/master/Serif/Palatino/Palatino%20Linotype%20Italic.ttf -O ~/.fonts/palatino-linotype/Palatino-Linotype-Italic.ttf
+          wget https://github.com/dolbydu/font/raw/master/Serif/Palatino/Palatino%20Linotype.ttf -O ~/.fonts/palatino-linotype/Palatino-Linotype.ttf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-Bold.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-Bold.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-ExtraLight.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-ExtraLight.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-Heavy.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-Heavy.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-Light.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-Light.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-Medium.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-Medium.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-Regular.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-Regular.otf
+          wget https://github.com/adobe-fonts/source-han-serif/raw/release/SubsetOTF/CN/SourceHanSerifCN-SemiBold.otf -O ~/.fonts/source-han-serif/SourceHanSerifCN-SemiBold.otf
+          fc-cache -f -v ~/.fonts
+          echo "Fonts installed"
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-lang-chinese texlive-latex-recommended librsvg2-bin 
+          wget https://github.com/jgm/pandoc/releases/download/2.14.1/pandoc-2.14.1-1-amd64.deb 
+          sudo dpkg -i pandoc-2.14.1-1-amd64.deb
+          sudo npm install -g --save-dev --save-exact prettier
+          xelatex --version
+          pandoc --version
+          prettier --version
+          echo "Dependencies installed"
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Build pdf
+        run: |
+          cd docs
+          python3 compile.py
+      - name: Set up release env
+        id: setup
+        run: |
+          echo "::set-output name=version::$(head -n 1 docs/release-notes.md)"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "::set-output name=date::$(date +%Y-%m-%d)"
+      - name: Create pdf release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.setup.outputs.version }}-${{ steps.setup.outputs.sha_short }}
+          release_name: Release ${{ steps.setup.outputs.date }}
+          body_path: docs/release-notes.md
+          draft: false
+          prerelease: true
+      - name: Upload pdf release
+        id: upload_release
+        uses: actions/upload-release-asset@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: docs/build/target/release.pdf
+          asset_name: dive-into-dl-pytorch.pdf
+          asset_content_type: application/pdf

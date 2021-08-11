@@ -1,0 +1,232 @@
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+$endif$
+
+\documentclass{book}
+\usepackage{iftex}
+\usepackage{amsmath,amssymb}
+\usepackage{mathspec}
+\usepackage{lmodern}
+
+%
+% geometry
+%
+\usepackage[a4paper]{geometry}
+\geometry{
+  left=2.54cm,
+  right=2.54cm,
+  top=3.18cm,
+  bottom=3.18cm,
+  footskip=1.48cm,
+  headsep=.5cm,
+  headheight=1.5cm
+}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\renewcommand{\baselinestretch}{1.3} % 行间距
+\usepackage{indentfirst}
+
+%
+% listings
+%
+\usepackage{listings}
+\usepackage{xcolor}
+\newcommand{\passthrough}[1]{#1}
+
+\lstdefinestyle{lfonts}{
+  basicstyle   = \small\ttfamily,
+  stringstyle  = \color{purple},
+  keywordstyle = \color{blue!60!black}\bfseries,
+  commentstyle = \color{gray},
+}
+\lstdefinestyle{lnumbers}{
+  numbers     = left,
+  numberstyle = \small,
+  numbersep   = 1em,
+  firstnumber = 1,
+  stepnumber  = 1,
+}
+\lstdefinestyle{llayout}{
+  breaklines       = true,
+  postbreak        = \mbox{\textcolor{red}{\(\hookrightarrow\)}\space},
+  showspaces       = false,
+  showtabs         = false,
+  tabsize          = 4,
+  columns          = flexible,
+}
+\lstdefinestyle{lgeometry}{
+  xleftmargin      = 20pt,
+  xrightmargin     = 0pt,
+  frame            = tb,
+  framesep         = \fboxsep,
+  framexleftmargin = 20pt,
+  aboveskip=1em,
+}
+\lstdefinestyle{lgeneral}{
+  style = lfonts,
+  style = lnumbers,
+  style = llayout,
+  style = lgeometry,
+}
+\lstdefinelanguage{Python}{
+  morekeywords={
+    % normal keywords (without data types)
+    False, await, else, import, pass,
+    None, break, except,, in, raise,
+    True, class, finally, is, return,
+    and, continue, for, lambda, try,
+    as, def, from, nonlocal, while,
+    assert, del, global, not, with,
+    async, elif, if, or, yield
+  },
+  morekeywords={[2]
+    % built-ins
+    abs, delattr, hash, memoryview, set, all, dict, help, min, setattr, any, dir, hex, next, slice, ascii, divmod, id, object, sorted, bin, enumerate, input, oct, staticmethod, bool, eval, int, open, str, breakpoint, exec, isinstance, ord, sum, bytearray, filter, issubclass, pow, super, bytes, float, iter, print, tuple, callable, format, len, property, type, chr, frozenset, list, range, vars, classmethod, getattr, locals, repr, zip, compile, globals, map, reversed, __import__, complex, hasattr, max, round,
+  },
+  sensitive,
+}
+\lstset{
+  style = lgeneral,
+}
+
+%
+% fonts 
+% 
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provide euro and other symbols
+\usepackage{fontspec}
+\PassOptionsToPackage{space}{xeCJK}
+\usepackage{xeCJK}
+\setmainfont{Palatino Linotype}
+\setCJKmainfont{Source Han Serif CN}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+%
+% link
+%
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+
+%
+% table
+%
+$if(tables)$
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+$endif$
+
+%
+% graphics
+%
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+$endif$
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
+%
+% blockquotes
+%
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[
+  rightline   = false,
+  bottomline  = false,
+  topline     = false,
+  linewidth   = 4pt,
+  linecolor   = blockquote-border,
+  skipabove   = \parskip
+]{customblockquote}
+\renewenvironment{quote}{\vspace{4pt}\begin{customblockquote}\list{}{\rightmargin=1pt\leftmargin=1pt}\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}\vspace{4pt}}
+
+%
+% numbering
+%
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+
+%
+% metainfo
+%
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+
+\begin{document}
+$if(title)$
+\maketitle
+$endif$
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+%
+% toc
+%
+$if(toc)$
+$if(toc-title)$
+  \renewcommand*\contentsname{$toc-title$}
+$endif$
+$if(colorlinks)$
+  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+$endif$
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
