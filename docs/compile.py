@@ -71,7 +71,6 @@ def build(files):
     --listings \
     --pdf-engine=xelatex \
     --template=tex/custom_template.tex \
-    -V documentclass=book \
     -V mathspec \
     -V graphicx \
     -V colorlinks \
